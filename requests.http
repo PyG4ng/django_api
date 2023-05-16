@@ -1,0 +1,200 @@
+@baseUrl = http://localhost:8000/api/v1
+
+# Создание юзера
+POST {{baseUrl}}/user/register
+Content-Type: application/json
+
+{
+    "first_name" : "Bob",
+    "last_name" : "Fuio",
+    "email" : "user_1@gmail.com",
+    "password" : "QazWsx124",
+    "password_rep" : "QazWsx124",
+    "company" : "BRTY",
+    "position": "2345"
+}
+
+###
+
+POST {{baseUrl}}/user/register/confirm
+Content-Type: application/json
+
+{
+    "email" : "user_1@gmail.com",
+    "token" : "e2e8d3241e9f8d5bef0c399b124"
+}
+
+###
+
+POST {{baseUrl}}/user/login
+Content-Type: application/json
+
+{
+    "email" : "user_1@gmail.com",
+    "password" : "QazWsx124"
+}
+
+###
+
+GET {{baseUrl}}/user/details
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+###
+
+POST {{baseUrl}}/user/contact
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+{
+    "city" : "Moscow",
+    "street" : "Arbat",
+    "phone": "1234"
+}
+
+###
+
+GET {{baseUrl}}/user/contact
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+###
+
+POST {{baseUrl}}/user/password_reset
+Content-Type: application/json
+
+{
+    "email" : "user_1@gmail.com"
+}
+
+###
+
+POST {{baseUrl}}/user/password_reset/confirm
+Content-Type: application/json
+
+{
+    "email" : "user_1@gmail.com",
+    "password": "NewPassword!2.",
+    "token": "491075ae1652d46630bd785"
+}
+
+###
+
+POST {{baseUrl}}/user/login
+Content-Type: application/json
+
+{
+    "email" : "user_1@gmail.com",
+    "password" : "NewPassword!2."
+}
+
+### Shop login
+
+POST {{baseUrl}}/user/login
+Content-Type: application/json
+
+{
+    "email" : "shop_1@gmail.com",
+    "password" : "Q123Q"
+}
+
+### Update shops store
+
+POST {{baseUrl}}/partner/update
+Content-Type: application/json
+Authorization: Token 3647a4df2626b72ea173c40ac50b8b756478c621
+
+{
+    "url" : "https://raw.githubusercontent.com/netology-code/pd-diplom/master/data/shop1.yaml"
+}
+
+### Get state
+
+GET {{baseUrl}}/partner/state
+Content-Type: application/json
+Authorization: Token 3647a4df2626b72ea173c40ac50b8b756478c621
+
+### Change state
+
+POST {{baseUrl}}/partner/state
+Content-Type: application/json
+Authorization: Token 3647a4df2626b72ea173c40ac50b8b756478c621
+
+{
+    "state": "off"
+}
+
+### Get orders list
+
+GET {{baseUrl}}/partner/orders
+Content-Type: application/json
+Authorization: Token 3647a4df2626b72ea173c40ac50b8b756478c621
+
+###
+
+GET {{baseUrl}}/shops
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+###
+
+GET {{baseUrl}}/categories
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+###
+
+GET {{baseUrl}}/products
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+{
+    "shop_id" : "2",
+    "category_id" : "4"
+}
+
+### Add to basket
+
+POST {{baseUrl}}/basket
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+{
+    "items": [ { "product_info": 1, "quantity": 7 },
+    { "product_info": 2, "quantity": 5 } ]
+}
+
+### Get basket
+
+GET {{baseUrl}}/basket
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+### Delete from basket
+
+DELETE  {{baseUrl}}/basket
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+{
+    "items": "4"
+}
+### Make order
+
+POST  {{baseUrl}}/order
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+{
+    "id": "1",
+    "contact": "1"
+}
+
+### My order list
+
+GET  {{baseUrl}}/order
+Content-Type: application/json
+Authorization: Token cb5da7d2acf7d6ebc930acd86c3f39f9ec24ffd6
+
+###
+
